@@ -1,3 +1,8 @@
+.Game {
+  text-align: center;
+}
+
 .Board {
   margin: 0 auto;
+  box-shadow: 0px 0px 54px 24px rgba(194,81,194, .6);
 }

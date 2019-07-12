@@ -1,7 +1,8 @@
 .Cell {
   height: 100px;
   width: 100px;
-  background-color: darkgray;
+  background-color: rgb(32, 32, 32);
+  transition: all .3s;
 }
 
 .Cell:hover {
@@ -9,5 +10,5 @@
 }
 
 .Cell-lit {
-  background-color: purple;
+  background-color: rgb(31, 162, 202);
 }
