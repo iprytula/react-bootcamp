@@ -42,21 +42,29 @@ export default class TodoList extends Component {
     })
   }
 
-  handleToogleTodo = (id) => {
-    const newTodos = [...this.state.todos]
-    newTodos.map(todo => {
-      return todo.id === id ? todo.completed = !todo.completed : todo
-    })
-
-    this.setState({ todos: newTodos })
-  }
-
   handleDeleteTodo = (id) => {
     let newTodos = [...this.state.todos]
 
     newTodos = newTodos.filter(todo => todo.id !== id)
 
     this.setState({ todos: newTodos })
+  }
+
+  updateTodo = (id, updatedTodo) => {
+    let newTodos = [...this.state.todos]
+
+    newTodos = newTodos.map(todo => {
+      let newTodo = todo
+      if (todo.id === id) {
+        newTodo.title = updatedTodo
+        newTodo.isEditing = false
+      }
+      return newTodo
+    })
+
+    this.setState({ todos: newTodos })
+    console.log(newTodos)
+    console.log(this.state.todos)
   }
 
   render() {
@@ -78,8 +86,8 @@ export default class TodoList extends Component {
                   task={todo.title}
                   isEditing={todo.isEditing}
                   completed={todo.completed}
-                  toogleTodo={this.handleToogleTodo}
                   deleteTodo={this.handleDeleteTodo}
+                  updateTodo={this.updateTodo}
                 />
               )
             })}
