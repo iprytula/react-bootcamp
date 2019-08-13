@@ -1,0 +1,14 @@
+.Cell {
+  height: 100px;
+  width: 100px;
+  background-color: rgb(32, 32, 32);
+  transition: all .3s;
+}
+
+.Cell:hover {
+  cursor: pointer;
+}
+
+.Cell-lit {
+  background-color: rgb(31, 162, 202);
+}
