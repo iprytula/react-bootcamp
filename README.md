@@ -30,8 +30,8 @@
   <div class="section" id="part-2-todo-app-list-add-remove-todos">
     <h2>Todo App - List, Add, Remove Todos</h2>
     <p>
-      Create a Todo App that allows users to see, add, edit, and remove
-      todos. It should contain the following components.
+      Todo App that allows users to see, add, edit, and remove
+      todos.
     </p>
   </div>
 </div>
