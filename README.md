@@ -178,7 +178,7 @@
     </p>
   </div>
   <div class="section" id="part-ii-cheezjokes-app">
-    <h2>Part II - CheeZJokes App</h2>
+    <h2>Part II - Dad Jokes App</h2>
     <p>
       Build an app that lets people view and vote on cheesy jokes. To
       generate jokes, you’ll use the
