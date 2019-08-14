@@ -1,0 +1,11 @@
+.New-game-btn {
+  font-size: 2rem;
+  font-family: neon;
+  cursor: pointer;
+  color: rgb(81, 113, 216);
+  background-color: rgb(32, 32, 32);
+  margin-top: 40px;
+  padding: .5rem;
+  border-radius: 10px;
+  outline: 0;
+}
