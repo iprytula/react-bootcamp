@@ -153,7 +153,6 @@
     </div>
 </div>
 <div class="section" id="react-lifecycle-exercise">
-  <h1>React Lifecycle Exercise</h1>
   <div class="section" id="part-i-deck-of-cards">
     <h2>Part I - Deck of Cards</h2>
     <p>
