@@ -193,7 +193,7 @@
   </div>
 </div>
 <div class="section" id="react-router-vending-machine">
-  <h1>React Router Vending Machine</h1>
+  <h2>React Router Vending Machine</h2>
   <p>Use the React Router to build a vending machine!</p>
 </div>
 <div class="section" id="part-1-react-router-dog-finder">
