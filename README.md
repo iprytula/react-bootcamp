@@ -1,6 +1,6 @@
 # modern-react-bootcamp
 <div class="section" id="lights-out">
-  <h1>Lights Out</h1>
+  <h2>Lights Out</h2>
   <p>
     Work with React events where the
     state and events happen in different classes.
@@ -23,7 +23,7 @@
   </div>
 </div>
 <div class="section" id="react-forms-exercises">
-  <h1>Todo App</h1>
+  <h2>Todo App</h2>
   <p>
     Practice working with React forms.
   </p>
@@ -154,7 +154,7 @@
 </div>
 <div class="section" id="react-lifecycle-exercise">
   <div class="section" id="part-i-deck-of-cards">
-    <h2>Part I - Deck of Cards</h2>
+    <h2>Deck of Cards</h2>
     <p>
       Build an app that displays a deck of cards, one card at a time.
       When the page loads, send a request to
@@ -177,7 +177,7 @@
     </p>
   </div>
   <div class="section" id="part-ii-cheezjokes-app">
-    <h2>Part II - Dad Jokes App</h2>
+    <h2>Dad Jokes App</h2>
     <p>
       Build an app that lets people view and vote on cheesy jokes. To
       generate jokes, you’ll use the
