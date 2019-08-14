@@ -35,7 +35,7 @@
   </div>
 </div>
 <div class="section" id="yahtzee-game">
-    <h1>Yahtzee Game</h1>
+    <h2>Yahtzee Game</h2>
     <div class="section" id="the-game">
         <p>
             Yahtzee is a chance-and-strategy dice rolling game. A game is played over 13 rounds.
