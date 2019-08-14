@@ -6,7 +6,6 @@
     state and events happen in different classes.
   </p>
   <div class="section" id="the-game">
-    <h2>The Game</h2>
     <p>
       <em>Lights Out</em> is a logic/puzzle game, played on a gird of
       individual lights, which can either be lit or unlit. The puzzle is
@@ -38,7 +37,6 @@
 <div class="section" id="yahtzee-game">
     <h1>Yahtzee Game</h1>
     <div class="section" id="the-game">
-        <h2>The Game</h2>
         <p>
             Yahtzee is a chance-and-strategy dice rolling game. A game is played over 13 rounds.
         </p>
