@@ -3,6 +3,8 @@
   justify-content: space-between;
   align-items: center;
   height: 4rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .slider {
