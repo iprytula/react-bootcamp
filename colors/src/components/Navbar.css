@@ -1,0 +1,31 @@
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+}
+
+.slider {
+  width: 50%;
+  margin-top: 7px;
+}
+
+.level {
+  display: inline-block;
+}
+
+.Navbar-left {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logo {
+  font-family: Roboto;
+}
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
