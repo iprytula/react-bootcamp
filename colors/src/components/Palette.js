@@ -1,7 +1,24 @@
 import React, { Component } from 'react'
 import ColorBox from './ColorBox'
 import Navbar from './Navbar'
-import './Palette.css'
+import { withStyles } from '@material-ui/styles'
+
+const styles = {
+  Palette: {
+    height: "100vh"
+  },
+  PaletteColors: {
+    height: "90%"
+  },
+  footer: {
+    display: "flex",
+
+    '& h5': {
+      marginLeft: "auto",
+      marginRight: "3rem"
+    }
+  }
+}
 
 class Palette extends Component {
   constructor(props) {
@@ -17,7 +34,7 @@ class Palette extends Component {
   }
 
   handleLevelChange(event, value) {
-    this.setState({level: value})
+    this.setState({ level: value })
   }
 
   handleFormatChange(format) {
@@ -25,26 +42,28 @@ class Palette extends Component {
   }
 
   render() {
+    const { classes } = this.props
+
     const colorBoxes = this.props.palette.colors[this.state.level].map(color => {
       return <ColorBox key={color.name} name={color.name} background={color[this.state.format]} />
     })
 
     return (
-    <div className='Palette'>
-      <Navbar
-        levelChange={this.handleLevelChange}
-        formatChange={this.handleFormatChange}
-        level={this.state.level}
-      />
-      <div className='Palette-colors'>
-        {colorBoxes}
+      <div className={classes.Palette}>
+        <Navbar
+          levelChange={this.handleLevelChange}
+          formatChange={this.handleFormatChange}
+          level={this.state.level}
+        />
+        <div className={classes.PaletteColors}>
+          {colorBoxes}
+        </div>
+        <footer className={classes.footer}>
+          <h5>{this.props.palette.paletteName} <span className='emoji'>{this.props.palette.emoji}</span></h5>
+        </footer>
       </div>
-      <footer className='footer'>
-        <h5>{this.props.palette.paletteName} <span className='emoji'>{this.props.palette.emoji}</span></h5>
-      </footer>
-    </div>
     )
   }
 }
 
-export default Palette
+export default withStyles(styles)(Palette)
