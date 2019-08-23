@@ -38,6 +38,7 @@ class Palette extends Component {
           levelChange={this.handleLevelChange}
           formatChange={this.handleFormatChange}
           level={this.state.level}
+          withSlider
         />
         <div className={classes.PaletteColors}>
           {colorBoxes}

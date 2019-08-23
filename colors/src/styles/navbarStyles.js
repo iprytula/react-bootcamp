@@ -18,7 +18,7 @@ export default {
     display: "flex",
     width: "50%",
     alignItems: "center",
-    justifyContent: "space-around"
+    justifyContent: "flex-start"
   },
   logo: {
     fontFamily: "Roboto",

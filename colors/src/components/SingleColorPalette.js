@@ -1,19 +1,40 @@
 import React, { Component } from 'react'
 import SingleColorBox from './SingleColorBox'
+import Navbar from './Navbar'
+import { withStyles } from '@material-ui/styles'
+import styles from '../styles/singleColorPaletteStyles'
 
 class SingleColorPalette extends Component {
-  render() {
-    const { palette } = this.props
-    const colorBoxes = palette.map(color => <SingleColorBox key={color.name} background={color.hex} />)
+  constructor(props) {
+    super(props)
 
-    console.log(colorBoxes)
+    this.state = {
+      format: 'hex'
+    }
+
+    this.handleFormatChange = this.handleFormatChange.bind(this)
+  }
+  
+  handleFormatChange(format) {
+    this.setState({ format })
+  }
+
+  render() {
+    const { palette, classes } = this.props
+    const colorBoxes = palette.map(color => <SingleColorBox name={color.name} color={color[this.state.format]} />)
+
     return (
       <div>
-        <h1>Single color box</h1>
-        {colorBoxes}
+        <Navbar
+          levelChange={this.handleLevelChange}
+          formatChange={this.handleFormatChange}
+        />
+        <div className={classes.root}>
+          {colorBoxes}
+        </div>
       </div>
     )
   }
 }
 
-export default SingleColorPalette
+export default withStyles(styles)(SingleColorPalette)
