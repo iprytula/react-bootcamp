@@ -7,38 +7,7 @@ import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/styles'
-
-const styles = {
-  Navbar: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    height: "4rem",
-    paddingLeft: "2rem",
-    paddingRight: "2rem"
-  },
-  slider: {
-    width: "50%",
-    marginTop: "7px"
-  },
-  level: {
-    display: "inline-block"
-  },
-  NavbarLeft: {
-    display: "flex",
-    width: "50%",
-    alignItems: "center",
-    justifyContent: "space-around"
-  },
-  logo: {
-    fontFamily: "Roboto",
-
-    '& a': {
-      textDecoration: "none",
-      color: "inherit"
-    }
-  },
-}
+import styles from '../styles/navbarStyles'
 
 class Navbar extends Component {
   constructor(props) {
