@@ -70,11 +70,8 @@ export default {
   },
   //.copy-overlay.show
   copyOverlayShow: {
-    opacity: "0",
-    zIndex: "0",
     width: "100%",
     height: "100%",
-    transform: "scale(.1)",
     transition: "transform .5s ease-in-out",
     opacity: "1",
     transform: "scale(50)",
@@ -119,8 +116,6 @@ export default {
     alignItems: "center",
     justifyContent: "center",
     fontSize: "3rem",
-    transform: "scale(.1)",
-    opacity: "0",
     color: "#fff",
     transition: "transform .7s ease-in-out",
     flexDirection: "column",

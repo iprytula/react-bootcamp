@@ -55,10 +55,5 @@ export default {
     padding: '10px',
     zIndex: 10,
     opacity: 0
-  },
-  miniColor: {
-    width: '25%',
-    height: '25%',
-    display: 'inline-block'
   }
 }
