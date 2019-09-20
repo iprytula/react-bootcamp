@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import SingleColorBox from './SingleColorBox'
+import ColorBox from './ColorBox'
 import Navbar from './Navbar'
 import { withStyles } from '@material-ui/styles'
 import styles from '../styles/singleColorPaletteStyles'
+import { Link } from 'react-router-dom'
 
 class SingleColorPalette extends Component {
   constructor(props) {
@@ -20,8 +21,21 @@ class SingleColorPalette extends Component {
   }
 
   render() {
-    const { palette, classes } = this.props
-    const colorBoxes = palette.map(color => <SingleColorBox name={color.name} color={color[this.state.format]} />)
+    const { palette, classes, paletteId, colorId } = this.props
+    const colorBoxes = 
+      palette.map(color => 
+        color.hex !== '#ffffff'
+          ?
+          <ColorBox
+            single
+            key={color.name}
+            name={color.name}
+            {...color}
+            background={color[this.state.format]}
+          />
+          :
+          null
+      )
 
     return (
       <div>
@@ -29,9 +43,15 @@ class SingleColorPalette extends Component {
           levelChange={this.handleLevelChange}
           formatChange={this.handleFormatChange}
         />
-        <div className={classes.root}>
+        <div className={classes.singleColorPalette}>
           {colorBoxes}
+          <div className={classes.SingleColorBox, classes.back} onClick={this.props.history.goBack}>
+            Back
+          </div>
         </div>
+        <footer className={classes.footer}>
+          <h5>{colorId} | {paletteId.replace(/-/g, ' ')}</h5>
+        </footer>
       </div>
     )
   }
