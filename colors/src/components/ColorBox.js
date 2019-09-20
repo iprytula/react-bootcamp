@@ -3,6 +3,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { withStyles } from '@material-ui/styles'
 import { Link } from 'react-router-dom'
 import styles from '../styles/colorBoxStyles'
+import chroma from 'chroma-js'
 
 class ColorBox extends Component {
   constructor(props) {
@@ -23,22 +24,23 @@ class ColorBox extends Component {
 
   render() {
     const { name, background, classes, moreUrl, single } = this.props
+    const isDarkColor = chroma(background).luminance() < 0.1
 
     return (
       <CopyToClipboard text={background} onCopy={this.changeCopyState}>
-        <div className={single ? classes.SingleColorBox : classes.ColorBox} style={{ background }}>
+        <div className={single ? 'ColorBox ' + classes.SingleColorBox : 'ColorBox ' + classes.ColorBox} style={{ background }}>
           <div style={{ background }} className={this.state.copied ? classes.copyOverlayShow : classes.copyOverlay} />
           <div className={this.state.copied ? classes.copyMsgShow : classes.copyMsg}>
-            <h1>Copied!</h1>
-            <p>{background}</p>
+            <h1 className={isDarkColor ? 'light' : 'dark'}>Copied!</h1>
+            <p className={isDarkColor ? 'light' : 'dark'}>{background}</p>
           </div>
           <div className='copy-container'>
             <div className={classes.boxContent}>
-              <span>{name}</span>
+              <span className={isDarkColor ? 'light' : 'dark'}>{name}</span>
             </div>
-            <button className={classes.copyButton}>Copy</button>
+            <button className={`copyButton ${isDarkColor ? 'light' : 'dark'}`}>Copy</button>
           </div>
-          {!single ? <Link to={moreUrl} className={classes.seeMore}>MORE</Link> : null}
+          {!single ? <Link to={moreUrl} className={classes.seeMore}><span className={isDarkColor ? 'light' : 'dark'}>MORE</span></Link> : null}
         </div>
       </CopyToClipboard>
     )

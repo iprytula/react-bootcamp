@@ -12,3 +12,36 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.copyButton {
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  display: "inline-block";
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -15px;
+  text-align: center;
+  outline: none;
+  background-color: rgba(255, 255, 255, .3);
+  font-size: 1rem;
+  line-height: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  opacity: 0;
+  transition: .4s;
+  cursor: pointer;
+}
+
+.ColorBox:hover .copyButton {
+  opacity: 1;
+}
+
+.light {
+  color: rgb(233, 233, 233);
+}
+
+.dark {
+  color: rgb(54, 54, 54);
+}

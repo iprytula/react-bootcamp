@@ -7,7 +7,7 @@ export default {
     display: "inline-block",
     position: "relative",
     marginBottom: "-4px",
-    cursor: "pointer"
+    cursor: "pointer",
   },
 
   SingleColorBox: {
@@ -17,32 +17,6 @@ export default {
     position: "relative",
     marginBottom: "-4px",
     cursor: "pointer"
-  },
-  //.copy-button
-  copyButton: {
-    width: "100px",
-    height: "30px",
-    position: "absolute",
-    display: "inline-block",
-    top: "50%",
-    left: "50%",
-    marginLeft: "-50px",
-    marginTop: "-15px",
-    textAlign: "center",
-    outline: "none",
-    background: "rgba(255, 255, 255, .3)",
-    fontSize: "1rem",
-    lineHeight: "30px",
-    color: "#fff",
-    textTransform: "uppercase",
-    border: "none",
-    opacity: "0",
-    transition: ".4s",
-    cursor: "pointer",
-
-    '&:hover': {
-      opacity: 1
-    }
   },
   //.box-content
   boxContent: {
@@ -66,7 +40,8 @@ export default {
     width: "60px",
     height: "30px",
     textAlign: "center",
-    lineHeight: "30px"
+    lineHeight: "30px",
+    textDecoration: 'none'
   },
   //.copy-overlay
   copyOverlay: {

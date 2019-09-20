@@ -1,6 +1,6 @@
 export default {
   Palette: {
-    height: "100vh"
+    height: "96vh"
   },
   PaletteColors: {
     height: "90%"

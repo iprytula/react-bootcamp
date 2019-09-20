@@ -2,7 +2,8 @@ export default {
   singleColorPalette: {
     display: 'flex',
     flexWrap: 'wrap',
-    minHeight: '100vh'
+    minHeight: '87vh',
+    overflow: 'hidden'
   },
 
   footer: {
