@@ -22,6 +22,7 @@ export default {
   },
   logo: {
     fontFamily: "Roboto",
+    marginRight: "30px",
 
     '& a': {
       textDecoration: "none",

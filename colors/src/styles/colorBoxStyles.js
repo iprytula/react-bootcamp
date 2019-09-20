@@ -9,6 +9,15 @@ export default {
     marginBottom: "-4px",
     cursor: "pointer"
   },
+
+  SingleColorBox: {
+    width: "20%",
+    margin: "0 auto",
+    display: "inline-block",
+    position: "relative",
+    marginBottom: "-4px",
+    cursor: "pointer"
+  },
   //.copy-button
   copyButton: {
     width: "100px",
