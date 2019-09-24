@@ -5,6 +5,7 @@ import { generatePalette } from './colorHelpers'
 import { Route, Switch } from 'react-router-dom'
 import PaletteList from './components/PaletteList'
 import SingleColorPalette from './components/SingleColorPalette'
+import NewPalette from './components/NewPalette'
 
 function App() {
   function findPalette(id) {
@@ -27,6 +28,11 @@ function App() {
   return (
     <div className="App">
       <Switch>
+        <Route
+          exact
+          path='/new-palette'
+          render={(routeProps) => <NewPalette />}
+        />
         <Route
           exact
           path='/'
