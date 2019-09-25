@@ -16,7 +16,7 @@ class ColorBox extends Component {
     return (
       <div style={{ background }} className={classes.NewColorBox}>
         <button className={ `${classes.deleteButton} ${textColorClass}` } onClick={() => this.props.deleteColor(background)}><DeleteIcon/></button>
-        <p className={ `${classes.colorName} ${textColorClass}` }>{name}</p>
+        <p className={ `${classes.colorName} ${textColorClass}` }>{name.toUpperCase()}</p>
       </div>
     )
   }

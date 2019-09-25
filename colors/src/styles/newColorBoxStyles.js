@@ -4,7 +4,9 @@ export default {
     height: '25%',
     margin: '0 auto',
     display: 'inline-block',
-    position: 'relative'
+    position: 'relative',
+    marginTop: '-6px',
+    cursor: 'pointer'
   },
   deleteButton: {
     position: 'absolute',

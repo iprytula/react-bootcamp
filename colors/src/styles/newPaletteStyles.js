@@ -106,7 +106,18 @@ const styles = theme => ({
   newPalette: {
     marginLeft: '-24px',
     height: '90vh',
-    marginTop: '40px'
+    marginTop: '40px',
+    marginRight: '-24px'
+  },
+  toolbar: {
+    backgroundColor: '#6596F5',
+    display: 'flex'
+  },
+  saveGoback: {
+    marginLeft: 'auto',
+    width: '25%',
+    display: 'flex',
+    justifyContent: 'space-between'
   }
 })
 

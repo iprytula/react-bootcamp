@@ -17,7 +17,8 @@ export default {
     display: 'flex',
     width: '100%',
     justifyContent: 'space-between',
-    color: '#fff'
+    color: '#fff',
+    alignItems: 'center'
   },
   palettes: {
     boxSizing: 'border-box',
@@ -25,5 +26,8 @@ export default {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 30%)',
     gridGap: '5%'
+  },
+  newPaletteButton: {
+    height: '35px'
   }
 }
