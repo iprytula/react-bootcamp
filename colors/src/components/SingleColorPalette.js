@@ -3,7 +3,6 @@ import ColorBox from './ColorBox'
 import Navbar from './Navbar'
 import { withStyles } from '@material-ui/styles'
 import styles from '../styles/singleColorPaletteStyles'
-import { Link } from 'react-router-dom'
 
 class SingleColorPalette extends Component {
   constructor(props) {
@@ -45,7 +44,7 @@ class SingleColorPalette extends Component {
         />
         <div className={classes.singleColorPalette}>
           {colorBoxes}
-          <div className={classes.SingleColorBox, classes.back} onClick={this.props.history.goBack}>
+          <div className={`${classes.SingleColorBox} ${classes.back}`} onClick={this.props.history.goBack}>
             Back
           </div>
         </div>

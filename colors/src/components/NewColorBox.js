@@ -5,10 +5,6 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import chroma from 'chroma-js'
 
 class ColorBox extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const { classes, background, name } = this.props
     const textColorClass = chroma(background).luminance() < 0.1 ? 'light' : 'dark'

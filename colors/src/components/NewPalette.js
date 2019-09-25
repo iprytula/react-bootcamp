@@ -34,6 +34,10 @@ class NewPalette extends Component {
     ValidatorForm.addValidationRule('isNameUnique', (value) => {
       return this.state.newPalette.every(color => color.name.toLowerCase() !== value.toLowerCase())
     })
+
+    ValidatorForm.addValidationRule('isColorUnique', () => {
+      return this.state.newPalette.every(color => color.color.toLowerCase() !== this.state.color.toLowerCase())
+    })
   }
 
   handleDrawerOpen = () => {
@@ -184,8 +188,8 @@ class NewPalette extends Component {
                   margin='dense'
                   variant='outlined'
                   value={this.state.name}
-                  validators={['required', 'isNameUnique']}
-                  errorMessages={['this field is required', 'Name of color must be unique']}
+                  validators={['required', 'isNameUnique', 'isColorUnique']}
+                  errorMessages={['this field is required', 'Name of color must be unique', 'Color is alredy used']}
                 />
                 <Button
                   style={{ backgroundColor: this.state.color }}
