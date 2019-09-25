@@ -12,10 +12,6 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import { withStyles } from '@material-ui/core/styles'
 import { SketchPicker } from 'react-color'
-import TextField from '@material-ui/core/TextField'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
-import Snackbar from '@material-ui/core/Snackbar'
-import CloseIcon from '@material-ui/icons/Close'
 import chroma from 'chroma-js'
 import Button from '@material-ui/core/Button'
 import NewColorBox from './NewColorBox'
@@ -29,16 +25,14 @@ class NewPalette extends Component {
     this.state = {
       drawerOpen: true,
       name: '',
-      randName: '',
       color: '#4C83EC',
-      snackBarOpen: false,
       newPalette: []
     }
   }
 
   componentDidMount() {
     ValidatorForm.addValidationRule('isNameUnique', (value) => {
-      return this.state.newPalette.every(color => color.name !== value)
+      return this.state.newPalette.every(color => color.name.toLowerCase() !== value.toLowerCase())
     })
   }
 
@@ -96,10 +90,11 @@ class NewPalette extends Component {
         const tags = response.data.colors[0].tags
 
         if (response.data.colors[0].hex !== '') {
-          this.setState({
-            randName: getRandomName(tags),
-            color: `#${response.data.colors[0].hex}`
-          })
+          const palette = [...this.state.newPalette]
+
+          palette.push({name: getRandomName(tags), color: `#${response.data.colors[0].hex}`})
+
+          this.setState({newPalette: palette})
         }
       })
   }
@@ -170,38 +165,6 @@ class NewPalette extends Component {
               onChange={this.handleColorChange}
               disableAlpha
             />
-            <div className={classes.proposed}>
-              {this.state.randName !== ''
-                ?
-                <div>
-                  <CopyToClipboard text={this.state.randName} onCopy={this.changeCopyState}>
-                    <p>Proposed Name: <span>{this.state.randName}</span></p>
-                  </CopyToClipboard>
-                  <Snackbar
-                    anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-                    open={this.state.snackBarOpen}
-                    autoHideDuration={1500}
-                    message={<span id='message-id'>Color Name Was Copied!</span>}
-                    ContentProps={{
-                      'aria-describedby': 'message-id'
-                    }}
-                    onClose={() => this.setState({ snackBarOpen: false })}
-                    action={[
-                      <IconButton
-                        onClick={() => this.setState({ snackBarOpen: false })}
-                        color='inherit'
-                        key='close'
-                        aria-label='close'
-                      >
-                        <CloseIcon />
-                      </IconButton>
-                    ]}
-                  />
-                </div>
-                :
-                ''
-              }
-            </div>
             {/* <form onSubmit={this.handleAddColor}> */}
               {/* <TextField
                 onChange={this.handleInputChange}
