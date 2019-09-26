@@ -2,9 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/styles'
 import styles from '../styles/miniPaletteStyles'
+import JSEMOJI from 'emoji-js'
 
 function MiniPalette(props) {
   const { classes, paletteName, emoji, id, colors } = props
+
+  const jsemoji = new JSEMOJI()
+  jsemoji.img_set = 'emojione'
+  jsemoji.img_sets.emojione.path = 'https://cdn.jsdelivr.net/emojione/assets/3.0/png/32/'
   
   return (
     <Link to={`palette/${id}`} className={classes.root}>
@@ -14,7 +19,7 @@ function MiniPalette(props) {
       <h5 className={classes.title}>
         {paletteName}
         <span className={classes.emoji}>
-          {emoji}
+          <img src={`${jsemoji.img_sets.emojione.path}${emoji}.png`} />
         </span>
       </h5>
     </Link>

@@ -19,6 +19,8 @@ import NewColorBox from './NewColorBox'
 import styles from '../styles/newPaletteStyles'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 import { TextField } from '@material-ui/core'
+import EmojiPicker from 'emoji-picker-react'
+import JSEMOJI from 'emoji-js'
 
 class NewPalette extends Component {
   constructor(props) {
@@ -27,13 +29,14 @@ class NewPalette extends Component {
     this.state = {
       drawerOpen: true,
       savePalette: false,
+      showEmojies: false,
       color: '#4C83EC',
       colorName: '',
       paletteName: '',
       newPalette: {
         paletteName: '',
         id: '',
-        emoji: '',
+        emoji: '1f3a8',
         colors: []
       }
     }
@@ -111,7 +114,7 @@ class NewPalette extends Component {
             newPalette: {
               paletteName: this.state.paletteName,
               id: this.state.id,
-              emoji: this.state.emoji,
+              emoji: this.state.newPalette.emoji,
               colors: colors
             },
             color: `#${response.data.colors[0].hex}`
@@ -137,7 +140,7 @@ class NewPalette extends Component {
       newPalette: {
         paletteName: this.state.paletteName,
         id: paletteId,
-        emoji: ':)',
+        emoji: this.state.newPalette.emoji,
         colors: this.state.newPalette.colors
       }
     }, () => {
@@ -146,9 +149,26 @@ class NewPalette extends Component {
     })
   }
 
+  handleSetEmoji = (emojiCode) => {
+    this.setState({
+      newPalette: {
+        paletteName: this.state.newPalette.paletteName,
+        id: this.state.newPalette.paletteId,
+        emoji: emojiCode,
+        colors: this.state.newPalette.colors
+      },
+      showEmojies: false
+    })
+  }
+
   render() {
     const textColorClass = chroma(this.state.color).luminance() < 0.1 ? 'light' : 'dark'
     const classes = this.props.classes
+
+    const jsemoji = new JSEMOJI()
+    jsemoji.img_set = 'emojione'
+    jsemoji.img_sets.emojione.path = 'https://cdn.jsdelivr.net/emojione/assets/3.0/png/32/'
+
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -172,10 +192,21 @@ class NewPalette extends Component {
               Add New Palette
             </Typography>
             <div className={classes.saveGoback}>
-              <Button variant='contained' color='secondary' className={classes.button} onClick={() => this.props.history.goBack()}>Go Back</Button>
+              <Button variant='contained' color='secondary' className={`${classes.button} ${classes.goBackButton}`} onClick={() => this.props.history.goBack()}>Go Back</Button>
               {this.state.savePalette
                 ?
                 <form className={classes.newPaletteForm} onSubmit={this.handleSavePalette}>
+                  {this.state.showEmojies
+                  ?
+                  <EmojiPicker
+                    onEmojiClick={(emojiCode) => this.handleSetEmoji(emojiCode)}
+                    className={classes.emojiPicker}
+                  />
+                  :
+                  null}
+                  <a className={classes.emoji} onClick={() => this.setState({ showEmojies: !this.state.showEmojies })}>
+                    <img src={`${jsemoji.img_sets.emojione.path}${this.state.newPalette.emoji}.png`} />
+                  </a>
                   <TextField
                     onChange={this.handleNamePalleteInputChange}
                     label={'Write your new Palette Name and press "Enter"'}

@@ -115,28 +115,43 @@ const styles = theme => ({
   },
   saveGoback: {
     marginLeft: 'auto',
-    width: '700px',
+    width: '620px',
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
 
     '& button': {
       marginLeft: '1rem'
     }
   },
   newPaletteForm: {
-    width: '60%',
+    width: '75%',
     height: '40px',
-    position: 'relative'
+    position: 'relative',
+
+    '& aside': {
+      position: 'absolute',
+      top: '55px'
+    }
   },
   newPaletteName: {
-    width: '90%',
-    marginLeft: '3%',
+    width: '80%',
     marginTop: '0px'
   },
   closeNewForm: {
     position: 'absolute',
     marginLeft: '0 !important',
-    top: '-5px'
+    top: '-5px',
+  },
+  emoji: {
+    width: 40,
+    cursor: 'pointer',
+    height: 40,
+    display: 'inline-block',
+    marginLeft: 20,
+    paddingTop: '5px'
+  },
+  goBackButton: {
+    marginLeft: 'auto !important'
   }
 })
 
