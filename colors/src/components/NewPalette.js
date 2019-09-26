@@ -8,6 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
+import CloseIcon from '@material-ui/icons/Close'
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import { withStyles } from '@material-ui/core/styles'
@@ -16,7 +17,8 @@ import chroma from 'chroma-js'
 import Button from '@material-ui/core/Button'
 import NewColorBox from './NewColorBox'
 import styles from '../styles/newPaletteStyles'
-import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator'
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import { TextField } from '@material-ui/core'
 
 class NewPalette extends Component {
   constructor(props) {
@@ -24,19 +26,22 @@ class NewPalette extends Component {
 
     this.state = {
       drawerOpen: true,
-      name: '',
+      savePalette: false,
       color: '#4C83EC',
-      newPalette: []
+      colorName: '',
+      paletteName: '',
+      newPalette: {
+        paletteName: '',
+        id: '',
+        emoji: '',
+        colors: []
+      }
     }
   }
 
   componentDidMount() {
     ValidatorForm.addValidationRule('isNameUnique', (value) => {
-      return this.state.newPalette.every(color => color.name.toLowerCase() !== value.toLowerCase())
-    })
-
-    ValidatorForm.addValidationRule('isColorUnique', () => {
-      return this.state.newPalette.every(color => color.color.toLowerCase() !== this.state.color.toLowerCase())
+      return this.state.newPalette.colors.every(color => color.name.toLowerCase() !== value.toLowerCase())
     })
   }
 
@@ -50,27 +55,31 @@ class NewPalette extends Component {
 
   handleColorChange = (color, event) => {
     this.setState({
-      color: color.hex,
+      color: color.hex
     })
   }
 
   handleInputChange = (evt) => {
-    this.setState({ name: evt.target.value })
+    this.setState({ colorName: evt.target.value })
+  }
+
+  handleNamePalleteInputChange = (evt) => {
+    this.setState({ paletteName: evt.target.value })
   }
 
   handleAddColor = (evt) => {
     evt.preventDefault()
 
-    const palette = [...this.state.newPalette]
-    palette.push({ name: this.state.name, color: this.state.color })
+    const colors = [...this.state.newPalette.colors]
+    colors.push({ name: this.state.colorName, color: this.state.color })
 
-    this.setState({ newPalette: palette, name: '', randName: '' })
+    this.setState({ newPalette: { colors: colors }, colorName: '', color: '#6596F5' })
   }
 
   handleDeleteColor = (hex) => {
-    const palette = this.state.newPalette.filter(color => color.color !== hex)
+    const colors = this.state.newPalette.colors.filter(color => color.color !== hex)
 
-    this.setState({ newPalette: palette })
+    this.setState({ newPalette: { colors: colors } })
   }
 
   handleRandomColor = () => {
@@ -93,24 +102,48 @@ class NewPalette extends Component {
       .then(response => {
         const tags = response.data.colors[0].tags
 
-        if (response.data.colors[0].hex !== '') {
-          const palette = [...this.state.newPalette]
+        if (response.data.colors[0].hex !== '' && tags) {
+          const colors = [...this.state.newPalette.colors]
 
-          palette.push({name: getRandomName(tags), color: `#${response.data.colors[0].hex}`})
+          colors.push({ name: getRandomName(tags), color: `#${response.data.colors[0].hex}` })
 
-          this.setState({newPalette: palette})
+          this.setState({
+            newPalette: {
+              paletteName: this.state.paletteName,
+              id: this.state.id,
+              emoji: this.state.emoji,
+              colors: colors
+            },
+            color: `#${response.data.colors[0].hex}`
+          })
         }
       })
   }
 
-  changeCopyState = () => {
-    this.setState({ copied: true, snackBarOpen: true }, () => {
-      setTimeout(() => this.setState({ copied: false }), 1500)
+  handleResetPalette = () => {
+    this.setState({
+      newPalette: {
+        paletteName: this.state.paletteName,
+        id: this.state.id,
+        emoji: this.state.emoji,
+        colors: []
+      }
     })
   }
 
-  handleResetPalette = () => {
-    this.setState({ newPalette: [] })
+  handleSavePalette = (newPalette) => {
+    const paletteId = this.state.paletteName.split(' ').map(word => word.toLowerCase()).join('-')
+    this.setState({
+      newPalette: {
+        paletteName: this.state.paletteName,
+        id: paletteId,
+        emoji: ':)',
+        colors: this.state.newPalette.colors
+      }
+    }, () => {
+      this.props.savePalette(this.state.newPalette)
+      this.props.history.push('/')
+    })
   }
 
   render() {
@@ -140,7 +173,36 @@ class NewPalette extends Component {
             </Typography>
             <div className={classes.saveGoback}>
               <Button variant='contained' color='secondary' className={classes.button} onClick={() => this.props.history.goBack()}>Go Back</Button>
-              <Button variant='contained' color='primary' className={classes.button}>Save Palette</Button>
+              {this.state.savePalette
+                ?
+                <form className={classes.newPaletteForm} onSubmit={this.handleSavePalette}>
+                  <TextField
+                    onChange={this.handleNamePalleteInputChange}
+                    label={'Write your new Palette Name and press "Enter"'}
+                    margin='dense'
+                    variant='outlined'
+                    className={classes.newPaletteName}
+                  />
+                  <IconButton
+                    onClick={() => this.setState({ savePalette: false })}
+                    color='inherit'
+                    key='close'
+                    aria-label='close'
+                    className={classes.closeNewForm}
+                  >
+                    <CloseIcon />
+                  </IconButton>
+                </form>
+                :
+                <div>
+                  {this.state.newPalette.colors.length > 0
+                  ?
+                  <Button variant='contained' color='primary' className={classes.button} onClick={() => this.setState({ savePalette: true })}>Save Palette</Button>
+                  :
+                  null
+                  }
+                </div>
+              }
             </div>
           </Toolbar>
         </AppBar>
@@ -169,36 +231,26 @@ class NewPalette extends Component {
               onChange={this.handleColorChange}
               disableAlpha
             />
-            {/* <form onSubmit={this.handleAddColor}> */}
-              {/* <TextField
+            <ValidatorForm onSubmit={this.handleAddColor}>
+              <TextValidator
                 onChange={this.handleInputChange}
                 id='outlined-dense'
                 label={'Your New Color Name'}
                 className={classes.colorNameInput}
                 margin='dense'
                 variant='outlined'
-                value={this.state.name}
-              /> */}
-              <ValidatorForm onSubmit={this.handleAddColor}>
-                <TextValidator
-                  onChange={this.handleInputChange}
-                  id='outlined-dense'
-                  label={'Your New Color Name'}
-                  className={classes.colorNameInput}
-                  margin='dense'
-                  variant='outlined'
-                  value={this.state.name}
-                  validators={['required', 'isNameUnique', 'isColorUnique']}
-                  errorMessages={['this field is required', 'Name of color must be unique', 'Color is alredy used']}
-                />
-                <Button
-                  style={{ backgroundColor: this.state.color }}
-                  className={`${classes.addColorBtn} ${textColorClass}`}
-                  type='submit'
-                >
-                  Add New Color
+                value={this.state.colorName}
+                validators={['required', 'isNameUnique']}
+                errorMessages={['this field is required', 'Name of color must be unique']}
+              />
+              <Button
+                style={{ backgroundColor: this.state.color }}
+                className={`${classes.addColorBtn} ${textColorClass}`}
+                type='submit'
+              >
+                Add New Color
                 </Button>
-              </ValidatorForm>
+            </ValidatorForm>
             {/* </form> */}
           </div>
         </Drawer>
@@ -209,7 +261,7 @@ class NewPalette extends Component {
         >
           <section className={classes.newPalette}>
             {
-              this.state.newPalette.map(color => <NewColorBox deleteColor={this.handleDeleteColor} key={color.color} background={color.color} name={color.name} />)
+              this.state.newPalette.colors.map(color => <NewColorBox deleteColor={this.handleDeleteColor} key={color.color} background={color.color} name={color.name} />)
             }
           </section>
         </main>

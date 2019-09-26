@@ -115,9 +115,28 @@ const styles = theme => ({
   },
   saveGoback: {
     marginLeft: 'auto',
-    width: '25%',
+    width: '700px',
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'flex-end',
+
+    '& button': {
+      marginLeft: '1rem'
+    }
+  },
+  newPaletteForm: {
+    width: '60%',
+    height: '40px',
+    position: 'relative'
+  },
+  newPaletteName: {
+    width: '90%',
+    marginLeft: '3%',
+    marginTop: '0px'
+  },
+  closeNewForm: {
+    position: 'absolute',
+    marginLeft: '0 !important',
+    top: '-5px'
   }
 })
 

@@ -1,6 +1,8 @@
 export default {
   root: {
-    display: 'block',
+    display: 'inline-block',
+    width: '28%',
+    minHeight: '200px',
     textDecoration: 'none',
     backgroundColor: 'white',
     border: '1px solid black',
@@ -11,7 +13,8 @@ export default {
     cursor: 'pointer',
     '&:hover svg': {
       opacity: 1
-    }
+    },
+    marginBottom: '1rem'
   },
   colors: {
     backgroundColor: '#dae1e4',
@@ -19,7 +22,6 @@ export default {
     width: '100%',
     borderRadius: '5px',
     overflow: 'hidden',
-    display: 'flex',
     flexWrap: 'wrap'
   },
   title: {
@@ -42,7 +44,7 @@ export default {
     display: 'inline-block',
     margin: '0 auto',
     position: 'relative',
-    marginBottom: '-3.5px'
+    marginBottom: '-4.5px'
   },
   deleteIcon: {
     color: 'white',

@@ -5,7 +5,7 @@ import styles from '../styles/miniPaletteStyles'
 
 function MiniPalette(props) {
   const { classes, paletteName, emoji, id, colors } = props
-
+  
   return (
     <Link to={`palette/${id}`} className={classes.root}>
       <div className={classes.colors}>

@@ -4,10 +4,10 @@ export default {
     minHeight: '100vh',
     display: 'flex',
     alignItems: 'flex-start',
-    justifyContent: 'center'
+    justifyContent: 'space-around'
   },
   container: {
-    width: '50%',
+    width: '70%',
     display: 'flex',
     alignItems: 'flex-start',
     flexDirection: 'column',
@@ -23,9 +23,9 @@ export default {
   palettes: {
     boxSizing: 'border-box',
     width: '100%',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 30%)',
-    gridGap: '5%'
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap'
   },
   newPaletteButton: {
     height: '35px'
