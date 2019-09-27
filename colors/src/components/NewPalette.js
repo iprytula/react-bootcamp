@@ -20,7 +20,7 @@ import styles from '../styles/newPaletteStyles'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 import { TextField } from '@material-ui/core'
 import EmojiPicker from 'emoji-picker-react'
-import JSEMOJI from 'emoji-js'
+import jsemoji from '../emojiHelper'
 
 class NewPalette extends Component {
   constructor(props) {
@@ -158,16 +158,12 @@ class NewPalette extends Component {
         colors: this.state.newPalette.colors
       },
       showEmojies: false
-    })
+    }, () => console.log(emojiCode))
   }
 
   render() {
     const textColorClass = chroma(this.state.color).luminance() < 0.1 ? 'light' : 'dark'
     const classes = this.props.classes
-
-    const jsemoji = new JSEMOJI()
-    jsemoji.img_set = 'emojione'
-    jsemoji.img_sets.emojione.path = 'https://cdn.jsdelivr.net/emojione/assets/3.0/png/32/'
 
     return (
       <div className={classes.root}>

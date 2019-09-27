@@ -48,6 +48,11 @@ class App extends Component {
           />
           <Route
             exact
+            path='/edit-palette/:id'
+            render={(routeProps) => <h1>Edit Palette</h1>}
+          />
+          <Route
+            exact
             path='/'
             render={() => <PaletteList palettes={this.state.palettes} />}
           />
