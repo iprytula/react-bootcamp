@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.a23ecb50.chunk.css",
-    "main.js": "/static/js/main.f2f92c1f.chunk.js",
-    "main.js.map": "/static/js/main.f2f92c1f.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.d112a40e.js",
-    "runtime-main.js.map": "/static/js/runtime-main.d112a40e.js.map",
-    "static/css/2.292c8731.chunk.css": "/static/css/2.292c8731.chunk.css",
-    "static/js/2.3d16e40b.chunk.js": "/static/js/2.3d16e40b.chunk.js",
-    "static/js/2.3d16e40b.chunk.js.map": "/static/js/2.3d16e40b.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.58112db4fcff912f702ad7e18a848bb7.js": "/precache-manifest.58112db4fcff912f702ad7e18a848bb7.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.292c8731.chunk.css.map": "/static/css/2.292c8731.chunk.css.map",
-    "static/css/main.a23ecb50.chunk.css.map": "/static/css/main.a23ecb50.chunk.css.map",
-    "static/media/bg.svg": "/static/media/bg.77428cd4.svg"
+    "main.css": "/react-bootcamp/static/css/main.a23ecb50.chunk.css",
+    "main.js": "/react-bootcamp/static/js/main.b645f135.chunk.js",
+    "main.js.map": "/react-bootcamp/static/js/main.b645f135.chunk.js.map",
+    "runtime-main.js": "/react-bootcamp/static/js/runtime-main.207a9685.js",
+    "runtime-main.js.map": "/react-bootcamp/static/js/runtime-main.207a9685.js.map",
+    "static/css/2.292c8731.chunk.css": "/react-bootcamp/static/css/2.292c8731.chunk.css",
+    "static/js/2.3d16e40b.chunk.js": "/react-bootcamp/static/js/2.3d16e40b.chunk.js",
+    "static/js/2.3d16e40b.chunk.js.map": "/react-bootcamp/static/js/2.3d16e40b.chunk.js.map",
+    "index.html": "/react-bootcamp/index.html",
+    "precache-manifest.a5f83e6ccde1da7066047dde9db816e6.js": "/react-bootcamp/precache-manifest.a5f83e6ccde1da7066047dde9db816e6.js",
+    "service-worker.js": "/react-bootcamp/service-worker.js",
+    "static/css/2.292c8731.chunk.css.map": "/react-bootcamp/static/css/2.292c8731.chunk.css.map",
+    "static/css/main.a23ecb50.chunk.css.map": "/react-bootcamp/static/css/main.a23ecb50.chunk.css.map",
+    "static/media/bg.svg": "/react-bootcamp/static/media/bg.77428cd4.svg"
   }
 }
