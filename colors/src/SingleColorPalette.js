@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/styles";
 import Navbar from "./Navbar";
 import ColorBox from "./ColorBox";
 import PaletteFooter from "./PaletteFooter";
-import styles from "./styles/PaletteStyles";
+import styles from "./styles/paletteStyles";
 
 class SingleColorPalette extends Component {
   constructor(props) {

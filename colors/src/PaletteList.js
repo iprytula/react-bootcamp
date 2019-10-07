@@ -14,7 +14,7 @@ import { withStyles } from "@material-ui/styles";
 import MiniPalette from "./MiniPalette";
 import blue from "@material-ui/core/colors/blue";
 import red from "@material-ui/core/colors/red";
-import styles from "./styles/PaletteListStyles";
+import styles from "./styles/paletteListStyles";
 
 class PaletteList extends Component {
   constructor(props) {
